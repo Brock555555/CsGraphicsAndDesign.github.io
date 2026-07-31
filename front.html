@@ -21,50 +21,6 @@
     background-size: 160px; /* or 'contain'/'cover' depending on the look */
   }
 
-  /* ====== Opening Animation Overlay ====== */
-  .opening-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeOut 0.8s ease forwards;
-    animation-delay: 2.2s; /* Wait until spin finishes */
-  }
-
-  /* Hollow diamond using borders */
-  .diamond {
-    width: 500px;
-    height: 500px;
-    transform: rotate(45deg);
-    border: 5px solid #00f6ff;
-    background: transparent;
-    box-shadow: 0 0 20px #00f6ff, 0 0 40px #00f6ff, 0 0 60px #00f6ff;
-    animation: spin 2s cubic-bezier(0.68,-0.55,0.27,1.55);
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(45deg) scale(0.33); opacity: 0; }
-    33% { transform: rotate(45deg) scale(0.66); opacity: 1;}
-    100% { transform: rotate(450deg) scale(3); opacity: 1; }
-  }
-
-  @keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-  }
-
-  /* Hide main content until overlay is gone */
-  .site-content {
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-  .site-content.show {
-    opacity: 1;
-  }
   /* ====== Title ====== */
   header {
     width: 100%;
@@ -162,7 +118,7 @@
   }
 
   /* Right-side image */
-  .menu-right img {
+  .menu-right iframe {
     max-width: 600px;
     border: 2px solid #00f6ff;
     border-radius: 12px;
@@ -174,6 +130,14 @@
   flex-direction: column; /* stack p and button-grid vertically */
   align-items: center;    /* keep them centered */
   gap: 100px;              /* spacing between paragraph and buttons */
+  }
+
+  .menu-left iframe {
+    display: flex;
+    max-width: 900px;
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
   }
 
   @keyframes flicker {
@@ -200,15 +164,16 @@
     <!-- Left side: name above image -->
     <div class="intro-left">
       <h1>Brock Allan</h1>
-      <img src="face.jpg" alt="Character" class="intro-img">
+      <img src="face.png" alt="Character" class="intro-img">
     </div>
 
     <!-- Right side: paragraph text -->
     <p>
-      Currently an undergraduate student at University of California Irvine.<br>
-      Pursuing a Bachelors degree in Computer Science with a specialization in Artificial Intelligence.<br>
-      Experimenting with Game Design using Unity and Unreal Engine 5.<br>
-      I hold LA certification and have professional experience with professor's Ferguson and Alfaro.
+      Graduate from the University of California Irvine for a Bachelors Degree
+       in Computer Science with a specialization in Artificial Intelligent Systems.<br>
+      Currently seeking employment and/or pursuing a Masters Degree in Computer Science.<br>
+      Is certified to teach at a college level through CLAP certification as a Learning Assistant under college professors.<br>
+      Interests include Game Development, Software Engineering, Machine Learning, and Cybersecurity.
     </p>
   </div>
 
@@ -216,16 +181,19 @@
   <div class="menu">
   <div class="menu-left">
     <p style="text-indent: 65px;">
-      Welcome to my website. My name is Brock Allan, and I am deeply interested in the fields of Computer Science, Game Design, and Artificial Intelligence. 
+      My name is Brock Allan, and I am deeply interested in the fields of Computer Science, Game Design, and Artificial Intelligence. 
       My current work focuses on exploring the applications and limitations of AI within the job market, developing role-playing games for entertainment, and strengthening my expertise in core programming concepts, including algorithms, data structures, and object-oriented programming.
       I also have a passion for teaching and mentoring, guiding students in their academic and professional growth. I am an active member of organizations such as Future Farmers of America (FFA), National Honor Society (NHS), and MESA (Mathematics, Engineering, Science, Achievement).
       Please feel free to explore my website at your convenience. If you are a recruiter, I encourage you to review my resume and projects. Thank you for visiting!<br>
       <br>
-      <b>Ongoing List of Coding Languages, Engines, Platforms, and Tools:</b> Assembly, Blender, C, C#, C++, Excel, Google Sheets, HTML, Java, Photoshop, Python, R, Unity, Unreal Engine 5<br><br>
-      For business inquiries please contact me at: <u>brockallan55@gmail.com</u>, I strongly prefer contact by email.<br><br>
-      Currently working on my 3D-2D Rogue-lite RPG going by the codename "The Dark Lord Beckons" using Unity. When I feel that there is enough gameplay I will upload a Beta. 
+      <b>Ongoing List of Coding Languages, Engines, Platforms, and Tools:</b> Assembly, Blender, C, C#, C++, Excel, Google Sheets, HTML, Java, Photoshop, Python, R, Unity, Unreal Engine 5, Lisp, Prolog, Git, Vim<br><br>
+      For business inquiries please contact me at: <u>brockallan55@gmail.com</u>, I strongly prefer contact by email.
     </p>
-    <img src="Screenshot (86).png" alt="Character" width = "500px">
+    <p style="text-align: center;">My most recent work was on my Senior thesis: "Exploring the Capabilites and Constraints of AI and Large Language Models in Game Design Methodology"</p>
+    <iframe src="Brock Allan Thesis.pdf#page1" width="100%" height="900px" style="border:none;"></iframe>
+  </div>
+
+  <div class="menu-right">
     <div class="button-grid">
       <button onclick="window.location.href='Github_Projects.html'">Github Projects</button>
       <button onclick="window.location.href='School_Projects.html'">School Projects</button>
@@ -234,23 +202,12 @@
       <button onclick="window.location.href='coding.html'">Coding Resources</button>
       <button>Notes</button>
     </div>
-  </div>
-
-  <div class="menu-right">
-    <img src="Resumenew.jpeg" alt="Character">
+    <br>
+    <p style="text-align: center;"><b>Current Resumes: Software Engineer, Machine Learning, Game Design</b></p>
+    <iframe src="combined_resumes.pdf#page=1" width="600px" height="900px" style="border:none;"></iframe>
   </div>
 </div>
 
-<script>
-  // Show site content once overlay animation ends
-  window.addEventListener("load", () => {
-    const overlay = document.querySelector(".opening-overlay");
-    const content = document.querySelector(".site-content");
-    overlay.addEventListener("animationend", () => {
-      overlay.style.display = "none";
-      content.classList.add("show");
-    });
-  });
-</script>
+
 </body>
 </html>
