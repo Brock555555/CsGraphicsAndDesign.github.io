@@ -17,8 +17,8 @@
     color: #fff;
     line-height: 1.6;
     overflow-x: hidden;
-    background: url("helmet.jpg") repeat; /* repeats horizontally & vertically */
-    background-size: 160px; /* or 'contain'/'cover' depending on the look */
+    background: url("helmet.jpg") repeat; 
+    background-size: 160px; 
   }
 
   /* ====== Title ====== */
@@ -26,9 +26,10 @@
     width: 100%;
     text-align: center;
     padding: 20px;
-    background: rgba(10, 10, 30);
+    background: rgba(10, 10, 30, 0.95);
     border-bottom: 3px solid #00f6ff;
     box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    margin-bottom: 30px;
   }
 
   header h1 {
@@ -36,164 +37,228 @@
     text-shadow: 0 0 15px #00f6ff, 0 0 30px #00f6ff;
   }
 
-  /* ====== Menu container ====== */
-  .menu {
-    width: 100%;
-    min-height: calc(100vh - 160px);
-    background: rgba(10, 10, 30);
-    border: 3px solid #00f6ff;
-    border-top: none;
-    box-shadow: 0 0 20px #00f6ff, 0 0 60px rgba(0, 246, 255, 0.7);
+  /* ====== STATIC LEFT MENU (Buttons) ====== */
+  .menu-left {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000000;
+    padding: 25px;
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    z-index: 1000;
+    width: 260px;
+  }
+
+  .menu-left .button-grid {
     display: flex;
-    justify-content: center;
-    align-items: top;
-    padding: 50px 20px;
-    gap: 60px;
-    animation: flicker 2s infinite alternate;
-    max-width: 100vw; /* optional: prevents it from being too wide */
-    margin: 0 auto;   /* horizontally center the container */
-    box-sizing: border-box; /* ensures padding doesn’t exceed width */
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .menu-left button {
+    background: rgba(0, 246, 255, 0.1);
+    border: 2px solid #00f6ff;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .menu-left button:hover {
+    background: #00f6ff;
+    color: #000;
+    box-shadow: 0 0 15px #00f6ff;
+  }
+
+  /* ====== STATIC RIGHT MENU (Resume) ====== */
+  .menu-right {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000000;
+    padding: 20px;
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 450px;
+  }
+
+  .menu-right p {
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .menu-right iframe {
+    width: 100%;
+    height: 75vh;
+    border: none;
+    border-radius: 8px;
+  }
+
+  /* ====== MIDDLE SCROLLING CONTENT ====== */
+  .middle-section {
+    margin-left: 320px; 
+    margin-right: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 50px;
   }
 
   .intro-text {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 30px 20px;
-    background: rgba(10, 10, 30);
-    border-bottom: 2px solid #00f6ff;
-    box-shadow: 0 0 10px #00f6ff, 0 0 20px rgba(0, 246, 255, 0.5);
-    text-align: left;
-    width: 90%;       /* container takes up 90% of the window width */
-    max-width: 800px; /* optional: prevents it from being too wide */
-    margin: 0 auto;   /* horizontally center the container */
-    box-sizing: border-box; /* ensures padding doesn’t exceed width */
+    gap: 30px;
+    padding: 30px;
+    background: rgba(10, 10, 30, 0.95);
+    border: 2px solid #00f6ff;
+    box-shadow: 0 0 10px #00f6ff;
+    border-radius: 12px;
+    width: 100%;
   }
 
-  /* Container for name + image */
   .intro-left {
     display: flex;
-    flex-direction: column; /* stack name above image */
-    align-items: center;    /* center horizontally */
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
+    min-width: 200px;
   }
 
-  /* Image styling */
   .intro-left img.intro-img {
-    width: 200px;    /* adjust as needed */
+    width: 180px;
     height: auto;
     border-radius: 12px;
     border: 2px solid #00f6ff;
     box-shadow: 0 0 10px #00f6ff;
   }
 
-  /* Paragraph styling */
   .intro-text p {
-    flex: 1;        /* take remaining space */
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
-  /* Buttons 2x2 grid */
-  .button-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .button-grid button {
-    background: rgba(0, 246, 255, 0.2);
-    border: 2px solid #00f6ff;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 15px 30px;
+  .menu {
+    width: 100%;
+    background: rgba(10, 10, 30, 0.95);
+    border: 3px solid #00f6ff;
+    box-shadow: 0 0 20px #00f6ff;
     border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .button-grid button:hover {
-    background: #00f6ff;
-    color: #000;
-    box-shadow: 0 0 20px #00f6ff, 0 0 40px #00f6ff;
-  }
-
-  /* Right-side image */
-  .menu-right iframe {
-    max-width: 600px;
-    border: 2px solid #00f6ff;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
-  }
-
-  .menu-left {
-  display: flex;
-  flex-direction: column; /* stack p and button-grid vertically */
-  align-items: center;    /* keep them centered */
-  gap: 100px;              /* spacing between paragraph and buttons */
-  }
-
-  .menu-left iframe {
     display: flex;
-    max-width: 900px;
+    flex-direction: column;
+    padding: 40px;
+    gap: 30px;
+    animation: flicker 2s infinite alternate;
+  }
+
+  .menu iframe {
+    width: 100%;
+    height: 800px;
     border: 2px solid #00f6ff;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    border-radius: 8px;
   }
 
   @keyframes flicker {
     0% { box-shadow: 0 0 10px #00f6ff, 0 0 25px rgba(0, 246, 255, 0.6); }
     100% { box-shadow: 0 0 25px #00f6ff, 0 0 60px rgba(0, 246, 255, 0.9); }
   }
+
+  /* =========================================
+     MOBILE & TABLET RESPONSIVE STYLES
+     ========================================= */
+  @media (max-width: 1400px) {
+    /* Turn the main container into a single vertical flex column */
+    .site-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      overflow-x: hidden;
+    }
+
+    /* Assign viewing order */
+    header { order: 1; margin-bottom: 20px; }
+    .menu-left { order: 2; margin-bottom: 40px; }
+    .middle-section { order: 3; margin-bottom: 0; padding-bottom: 20px; }
+    .menu-right { order: 4; margin-bottom: 40px; }
+
+    /* Release the fixed Left Menu */
+    .menu-left {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    /* Make buttons wrap nicely side-by-side on mobile */
+    .menu-left .button-grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .menu-left button {
+      flex: 1 1 200px; /* Buttons stretch to fill space */
+    }
+
+    /* Reset the Middle Section margins so it takes up full width */
+    .middle-section {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Stack intro image and text vertically on mobile */
+    .intro-text {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Release the fixed Right Menu */
+    .menu-right {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    .menu-right iframe {
+      height: 600px; /* Give a fixed scrollable height on mobile */
+    }
+    
+    .menu iframe {
+      height: 500px;
+    }
+  }
 </style>
 </head>
 <body>
 
-<!-- Opening Overlay -->
-<div class="opening-overlay">
-  <div class="diamond"></div>
-</div>
-
-<!-- Main content -->
 <div class="site-content">
-  <!-- Title -->
+  <!-- Top Header -->
   <header>
     <h1>CS Graphics & Design</h1>
   </header>
 
-  <div class="intro-text">
-    <!-- Left side: name above image -->
-    <div class="intro-left">
-      <h1>Brock Allan</h1>
-      <img src="face.png" alt="Character" class="intro-img">
-    </div>
-
-    <!-- Right side: paragraph text -->
-    <p>
-      Graduate from the University of California Irvine for a Bachelors Degree
-       in Computer Science with a specialization in Artificial Intelligent Systems.<br>
-      Currently seeking employment and/or pursuing a Masters Degree in Computer Science.<br>
-      Is certified to teach at a college level through CLAP certification as a Learning Assistant under college professors.<br>
-      Interests include Game Development, Software Engineering, Machine Learning, and Cybersecurity.
-    </p>
-  </div>
-
-  <!-- Menu -->
-  <div class="menu">
+  <!-- Left Side: Buttons -->
   <div class="menu-left">
-    <p style="text-indent: 65px;">
-      My name is Brock Allan, and I am deeply interested in the fields of Computer Science, Game Design, and Artificial Intelligence. 
-      My current work focuses on exploring the applications and limitations of AI within the job market, developing role-playing games for entertainment, and strengthening my expertise in core programming concepts, including algorithms, data structures, and object-oriented programming.
-      I also have a passion for teaching and mentoring, guiding students in their academic and professional growth. I am an active member of organizations such as Future Farmers of America (FFA), National Honor Society (NHS), and MESA (Mathematics, Engineering, Science, Achievement).
-      Please feel free to explore my website at your convenience. If you are a recruiter, I encourage you to review my resume and projects. Thank you for visiting!<br>
-      <br>
-      <b>Ongoing List of Coding Languages, Engines, Platforms, and Tools:</b> Assembly, Blender, C, C#, C++, Excel, Google Sheets, HTML, Java, Photoshop, Python, R, Unity, Unreal Engine 5, Lisp, Prolog, Git, Vim<br><br>
-      For business inquiries please contact me at: <u>brockallan55@gmail.com</u>, I strongly prefer contact by email.
-    </p>
-    <p style="text-align: center;">My most recent work was on my Senior thesis: "Exploring the Capabilites and Constraints of AI and Large Language Models in Game Design Methodology"</p>
-    <iframe src="Brock Allan Thesis.pdf#page1" width="100%" height="900px" style="border:none;"></iframe>
-  </div>
-
-  <div class="menu-right">
     <div class="button-grid">
       <button onclick="window.location.href='https://github.com/Brock555555?tab=repositories'">Github Projects</button>
       <button onclick="window.location.href='School_Projects.html'">School Projects</button>
@@ -202,12 +267,62 @@
       <button onclick="window.location.href='coding.html'">Coding Resources</button>
       <button>Notes</button>
     </div>
-    <br>
-    <p style="text-align: center;"><b>Current Resumes: Software Engineer, Machine Learning, Game Design</b></p>
-    <iframe src="combined_resumes.pdf#page=1" width="600px" height="900px" style="border:none;"></iframe>
+  </div>
+
+  <!-- Right Side: Resume -->
+  <div class="menu-right">
+    <p><b>Current Resumes:<br>Software Engineer, Machine Learning, Game Design</b></p>
+    <iframe src="combined_resumes.pdf#page=1"></iframe>
+  </div>
+
+  <!-- Center Area: Scrolls Normally -->
+  <div class="middle-section">
+    
+    <!-- Intro Bio -->
+    <div class="intro-text">
+      <div class="intro-left">
+        <h2>Brock Allan</h2>
+        <img src="face.png" alt="Character" class="intro-img">
+      </div>
+      <p>
+        Graduate from the University of California Irvine for a Bachelors Degree
+        in Computer Science with a specialization in Artificial Intelligent Systems.<br><br>
+        Currently seeking employment and/or pursuing a Masters Degree in Computer Science.<br><br>
+        Is certified to teach at a college level through CLAP certification as a Learning Assistant under college professors.<br><br>
+        Interests include Game Development, Software Engineering, Machine Learning, and Cybersecurity.
+      </p>
+    </div>
+
+    <!-- Long Bio & Thesis -->
+    <div class="menu">
+      <p style="text-indent: 40px;">
+        My name is Brock Allan, and I am deeply interested in the fields of Computer Science, Game Design, and Artificial Intelligence. 
+        My current work focuses on exploring the applications and limitations of AI within the job market, developing role-playing games for entertainment, and strengthening my expertise in core programming concepts, including algorithms, data structures, and object-oriented programming.
+        I also have a passion for teaching and mentoring, guiding students in their academic and professional growth. I am an active member of organizations such as Future Farmers of America (FFA), National Honor Society (NHS), and MESA (Mathematics, Engineering, Science, Achievement).
+        Please feel free to explore my website at your convenience. If you are a recruiter, I encourage you to review my resume and projects. Thank you for visiting!
+      </p>
+      
+      <p>
+        <b>Ongoing List of Coding Languages, Engines, Platforms, and Tools:</b><br> 
+        Assembly, Blender, C, C#, C++, Excel, Google Sheets, HTML, Java, Photoshop, Python, R, Unity, Unreal Engine 5, Lisp, Prolog, Git, Vim
+      </p>
+      
+      <p>
+        For business inquiries please contact me at: <u>brockallan55@gmail.com</u>. I strongly prefer contact by email.
+      </p>
+
+      <hr style="border-color: #00f6ff;">
+
+      <p style="text-align: center; font-size: 1.2rem; font-weight: bold;">
+        My most recent work was on my Senior thesis: <br>
+        "Exploring the Capabilities and Constraints of AI and Large Language Models in Game Design Methodology"
+      </p>
+      
+      <iframe src="Brock Allan Thesis.pdf#page1"></iframe>
+    </div>
+
   </div>
 </div>
-
 
 </body>
 </html>
