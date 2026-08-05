@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CS Graphics & Design</title>
+<title>Honors & Awards</title>
 <style>
   * {
     margin: 0;
@@ -58,7 +58,7 @@
     gap: 15px;
   }
 
-  .menu-left button {
+  .menu-left button, .menu .button-grid button {
     background: rgba(0, 246, 255, 0.1);
     border: 2px solid #00f6ff;
     color: #fff;
@@ -70,7 +70,7 @@
     text-align: center;
   }
 
-  .menu-left button:hover {
+  .menu-left button:hover, .menu .button-grid button:hover {
     background: #00f6ff;
     color: #000;
     box-shadow: 0 0 15px #00f6ff;
@@ -118,38 +118,19 @@
     padding-bottom: 50px;
   }
 
+  /* ====== Intro text ====== */
   .intro-text {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    padding: 30px;
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
     background: rgba(10, 10, 30, 0.95);
     border: 2px solid #00f6ff;
-    box-shadow: 0 0 10px #00f6ff;
     border-radius: 12px;
-    width: 100%;
+    box-shadow: 0 0 10px #00f6ff, 0 0 20px rgba(0, 246, 255, 0.5);
+    font-size: 1.2rem;
   }
 
-  .intro-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    min-width: 200px;
-  }
-
-  .intro-left img.intro-img {
-    width: 180px;
-    height: auto;
-    border-radius: 12px;
-    border: 2px solid #00f6ff;
-    box-shadow: 0 0 10px #00f6ff;
-  }
-
-  .intro-text p {
-    font-size: 1.1rem;
-  }
-
+  /* ====== Menu container (Classes List) ====== */
   .menu {
     width: 100%;
     background: rgba(10, 10, 30, 0.95);
@@ -158,16 +139,33 @@
     border-radius: 12px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     padding: 40px;
-    gap: 30px;
+    gap: 20px;
     animation: flicker 2s infinite alternate;
   }
 
-  .menu iframe {
-    width: 100%;
-    height: 800px;
-    border: 2px solid #00f6ff;
-    border-radius: 8px;
+  .menu h1 {
+    color: #00f6ff;
+    margin-top: 20px;
+    border-bottom: 1px solid #00f6ff;
+    padding-bottom: 5px;
+  }
+
+  .menu p {
+    margin-bottom: 15px;
+  }
+  
+  .menu ul {
+    margin-left: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .menu .button-grid {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
   }
 
   @keyframes flicker {
@@ -179,7 +177,6 @@
      MOBILE & TABLET RESPONSIVE STYLES
      ========================================= */
   @media (max-width: 1400px) {
-    /* Turn the main container into a single vertical flex column */
     .site-content {
       display: flex;
       flex-direction: column;
@@ -188,13 +185,11 @@
       overflow-x: hidden;
     }
 
-    /* Assign viewing order */
     header { order: 1; margin-bottom: 20px; }
     .menu-left { order: 2; margin-bottom: 40px; }
     .middle-section { order: 3; margin-bottom: 0; padding-bottom: 20px; }
     .menu-right { order: 4; margin-bottom: 40px; }
 
-    /* Release the fixed Left Menu */
     .menu-left {
       position: relative;
       left: auto;
@@ -204,17 +199,15 @@
       max-width: 900px;
     }
     
-    /* Make buttons wrap nicely side-by-side on mobile */
     .menu-left .button-grid {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
     }
     .menu-left button {
-      flex: 1 1 200px; /* Buttons stretch to fill space */
+      flex: 1 1 200px; 
     }
 
-    /* Reset the Middle Section margins so it takes up full width */
     .middle-section {
       margin-left: 0;
       margin-right: 0;
@@ -222,14 +215,6 @@
       max-width: 900px;
     }
 
-    /* Stack intro image and text vertically on mobile */
-    .intro-text {
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Release the fixed Right Menu */
     .menu-right {
       position: relative;
       right: auto;
@@ -240,11 +225,7 @@
     }
     
     .menu-right iframe {
-      height: 600px; /* Give a fixed scrollable height on mobile */
-    }
-    
-    .menu iframe {
-      height: 500px;
+      height: 600px; 
     }
   }
 </style>
@@ -252,14 +233,15 @@
 <body>
 
 <div class="site-content">
-  <!-- Top Header -->
+  <!-- Title -->
   <header>
-    <h1>CS Graphics & Design</h1>
+    <h1>Honors & Awards</h1>
   </header>
 
   <!-- Left Side: Buttons -->
   <div class="menu-left">
     <div class="button-grid">
+      <button onclick="window.location.href='index.html'">Home Page</button>
       <button onclick="window.location.href='https://github.com/Brock555555?tab=repositories'">Github Projects</button>
       <button onclick="window.location.href='School_Projects.html'">School Projects</button>
       <button onclick="window.location.href='Thesis.html'">Thesis & Research Papers</button>
@@ -277,50 +259,41 @@
 
   <!-- Center Area: Scrolls Normally -->
   <div class="middle-section">
-    
-    <!-- Intro Bio -->
-    <div class="intro-text">
-      <div class="intro-left">
-        <h2>Brock Allan</h2>
-        <img src="face.png" alt="Character" class="intro-img">
-      </div>
-      <p>
-        Graduate from the University of California Irvine for a Bachelors Degree
-        in Computer Science with a specialization in Artificial Intelligent Systems.<br><br>
-        Currently seeking employment and/or pursuing a Masters Degree in Computer Science.<br><br>
-        Is certified to teach at a college level through CLAP certification as a Learning Assistant under college professors.<br><br>
-        Interests include Game Development, Software Engineering, Machine Learning, and Cybersecurity.
-      </p>
-    </div>
+    <!-- Intro text -->
 
-    <!-- Long Bio & Thesis -->
+    <!-- Classes List -->
     <div class="menu">
-      <p style="text-indent: 40px;">
-        My name is Brock Allan, and I am deeply interested in the fields of Computer Science, Game Design, and Artificial Intelligence. 
-        My current work focuses on exploring the applications and limitations of AI within the job market, developing role-playing games for entertainment, and strengthening my expertise in core programming concepts, including algorithms, data structures, and object-oriented programming.
-        I also have a passion for teaching and mentoring, guiding students in their academic and professional growth. I am an active member of organizations such as Future Farmers of America (FFA), National Honor Society (NHS), and MESA (Mathematics, Engineering, Science, Achievement).
-        Please feel free to explore my website at your convenience. If you are a recruiter, I encourage you to review my resume and projects. Thank you for visiting!
-      </p>
-      
+      <h1>Honors & Awards</h1>
+
       <p>
-        <b>Ongoing List of Coding Languages, Engines, Platforms, and Tools:</b><br> 
-        Assembly, Blender, C, C#, C++, Excel, Google Sheets, HTML, Java, Photoshop, Python, R, Unity, Unreal Engine 5, Lisp, Prolog, Git, Vim
-      </p>
-      
-      <p>
-        For business inquiries please contact me at: <u>brockallan55@gmail.com</u>. I strongly prefer contact by email.
+        <b>Bachelors Degree in Computer Science with a Specialization in Intelligent Systems - 2026</b><br>A bachelors of science at the University of California irvine.
       </p>
 
-      <hr style="border-color: #00f6ff;">
-
-      <p style="text-align: center; font-size: 1.2rem; font-weight: bold;">
-        My most recent work was on my Senior thesis: <br>
-        "Exploring the Capabilities and Constraints of AI and Large Language Models in Game Design Methodology"
+      <p>
+        <b>Campuswide Honors Collegium Graduate - 2026</b><br>Graduated with honors from UCI with the CHC.
       </p>
-      
-      <iframe src="Brock Allan Thesis.pdf#page1"></iframe>
+
+      <p>
+        <b>UCI Dean's Honor List - 2022-2026</b><br>At UC Irvine, the Dean’s Honor List is awarded to undergraduate students who achieve a minimum 3.50 GPA in a quarter and are enrolled in at least 12 graded units Reddit. This recognition is given each quarter (fall, winter, spring) and is a way for the university to acknowledge strong academic performance.
+      </p>
+
+      <p>
+        <b>FFA State Degree - 2022</b><br>The FFA State Degree is the highest honor a state FFA association can award, requiring at least 2 years of membership, the Chapter FFA Degree, 360 hours of agricultural education, a strong SAE project with at least $2,000 earned or 600 hours worked, leadership activities, parliamentary procedure skills, a 6‑minute speech, and at least 25 hours of community service.
+      </p>
+
+      <p>
+        <b>FFA Chapter Degree - 2019</b><br>The Chapter FFA Degree is awarded to FFA members who have demonstrated active participation, leadership, and a supervised agricultural experience at the chapter level.
+      </p>
+
+      <p>
+        <b>FFA Greenhand Degree - 2018</b><br>The Greenhand FFA Degree is the first official degree awarded to new FFA members, recognizing their knowledge of FFA history, mission, and basic agricultural skills.
+      </p>
+
+      <p>
+        <b>in progress - superintendents award next </b>
+      </p>
+
     </div>
-
   </div>
 </div>
 
