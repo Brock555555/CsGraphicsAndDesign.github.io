@@ -17,62 +17,8 @@
     color: #fff;
     line-height: 1.6;
     overflow-x: hidden;
-  }
-
-  /* ====== Opening Animation Overlay ====== */
-  .opening-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeOut 0.8s ease forwards;
-    animation-delay: 2.2s; /* Wait until spin finishes */
-  }
-
-  /* Hollow diamond using borders */
-  .diamond {
-    width: 500px;
-    height: 500px;
-    transform: rotate(45deg);
-    border: 5px solid #00f6ff;
-    background: transparent;
-    box-shadow: 0 0 20px #00f6ff, 0 0 40px #00f6ff, 0 0 60px #00f6ff;
-    animation: spin 2s cubic-bezier(0.68,-0.55,0.27,1.55);
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(45deg) scale(0.33); opacity: 0; }
-    33% { transform: rotate(45deg) scale(0.66); opacity: 1;}
-    100% { transform: rotate(450deg) scale(3); opacity: 1; }
-  }
-
-  @keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-  }
-
-  /* Hide main content until overlay is gone */
-  .site-content {
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-  .site-content.show {
-    opacity: 1;
-  }
-
-  /* ====== Intro text ====== */
-  .intro-text {
-    width: 100%;
-    padding: 30px 20px;
-    text-align: center;
-    background: rgba(10, 10, 30, 0.8);
-    border-bottom: 2px solid #00f6ff;
-    box-shadow: 0 0 10px #00f6ff, 0 0 20px rgba(0, 246, 255, 0.5);
-    font-size: 1.2rem;
+    background: url("helmet.jpg") repeat; 
+    background-size: 160px; 
   }
 
   /* ====== Title ====== */
@@ -80,9 +26,10 @@
     width: 100%;
     text-align: center;
     padding: 20px;
-    background: rgba(10, 10, 30, 0.9);
+    background: rgba(10, 10, 30, 0.95);
     border-bottom: 3px solid #00f6ff;
     box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    margin-bottom: 30px;
   }
 
   header h1 {
@@ -90,93 +37,245 @@
     text-shadow: 0 0 15px #00f6ff, 0 0 30px #00f6ff;
   }
 
-  /* ====== Menu container ====== */
-  .menu {
-    width: 100%;
-    min-height: calc(100vh - 160px);
-    background: rgba(10, 10, 30, 0.85);
-    border: 3px solid #00f6ff;
-    border-top: none;
-    box-shadow: 0 0 20px #00f6ff, 0 0 60px rgba(0, 246, 255, 0.7);
-    display: flex;
-    justify-content: top;
-    align-items: center;
-    padding: 50px 20px;
-    gap: 60px;
-    animation: flicker 2s infinite alternate;
-    flex-direction: column;
+  /* ====== STATIC LEFT MENU (Buttons) ====== */
+  .menu-left {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000000;
+    padding: 25px;
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    z-index: 1000;
+    width: 260px;
   }
 
-  .button-grid button{
-    background: rgba(0, 246, 255, 0.2);
+  .menu-left .button-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .menu-left button, .menu .button-grid button {
+    background: rgba(0, 246, 255, 0.1);
     border: 2px solid #00f6ff;
     color: #fff;
-    font-size: 1.2rem;
-    padding: 15px 30px;
-    border-radius: 6px;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .menu-left button:hover, .menu .button-grid button:hover {
+    background: #00f6ff;
+    color: #000;
+    box-shadow: 0 0 15px #00f6ff;
+  }
+
+  /* ====== STATIC RIGHT MENU (Resume) ====== */
+  .menu-right {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000000;
+    padding: 20px;
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    z-index: 1000;
     display: flex;
-    justify-content: center; /* center horizontally */
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 450px;
+  }
+
+  .menu-right p {
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .menu-right iframe {
+    width: 100%;
+    height: 75vh;
+    border: none;
+    border-radius: 8px;
+  }
+
+  /* ====== MIDDLE SCROLLING CONTENT ====== */
+  .middle-section {
+    margin-left: 320px; 
+    margin-right: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 50px;
+  }
+
+  /* ====== Intro text ====== */
+  .intro-text {
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
+    background: rgba(10, 10, 30, 0.95);
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #00f6ff, 0 0 20px rgba(0, 246, 255, 0.5);
+    font-size: 1.2rem;
+  }
+
+  /* ====== Menu container (Images List) ====== */
+  .menu {
+    width: 100%;
+    background: rgba(10, 10, 30, 0.95);
+    border: 3px solid #00f6ff;
+    box-shadow: 0 0 20px #00f6ff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 40px;
+    gap: 40px;
+    animation: flicker 2s infinite alternate;
+  }
+
+  /* Ensure images fit the screen nicely and have a matching theme border */
+  .menu img {
+    max-width: 100%;
+    width: 600px; /* Limits max width on large screens */
+    height: auto;
+    border: 2px solid #00f6ff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
+  }
+
+  .menu .button-grid {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
     width: 100%;
   }
 
-  .button-grid button:hover {
-    background: #00f6ff;
-    color: #000;
-    box-shadow: 0 0 20px #00f6ff, 0 0 40px #00f6ff;
-  }
   @keyframes flicker {
     0% { box-shadow: 0 0 10px #00f6ff, 0 0 25px rgba(0, 246, 255, 0.6); }
     100% { box-shadow: 0 0 25px #00f6ff, 0 0 60px rgba(0, 246, 255, 0.9); }
+  }
+
+  /* =========================================
+     MOBILE & TABLET RESPONSIVE STYLES
+     ========================================= */
+  @media (max-width: 1400px) {
+    .site-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      overflow-x: hidden;
+    }
+
+    header { order: 1; margin-bottom: 20px; }
+    .menu-left { order: 2; margin-bottom: 40px; }
+    .middle-section { order: 3; margin-bottom: 0; padding-bottom: 20px; }
+    .menu-right { order: 4; margin-bottom: 40px; }
+
+    .menu-left {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    .menu-left .button-grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .menu-left button {
+      flex: 1 1 200px; 
+    }
+
+    .middle-section {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .menu-right {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    .menu-right iframe {
+      height: 600px; 
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- Opening Overlay -->
-<div class="opening-overlay">
-  <div class="diamond"></div>
-</div>
-
-<!-- Main content -->
 <div class="site-content">
   <!-- Title -->
   <header>
     <h1>Graphic Design</h1>
   </header>
 
-  <!-- Intro text -->
-  <div class="intro-text">
-    This page is composed of graphical design projects that I have completed over the years.
-  </div>
-
-  <div class = "menu">
-    <img src="Hades_Brock_Allan_Custom_helmet_1.png" alt="Character" width="600px">
-    <img src="mav.jpg" alt="Character"width="600px">
-    <img src="IMG_20210219_192233_956.jpg" alt="Character"width="600px">
-    <img src="Kratos_Brock_Allan_Custom_helmet_1.jpg" alt="Character"width="600px">
-    <img src="Screenshot_20210313-105704_Drive.jpg" alt="Character"width="600px">
-    <img src="Zeus_Brock_Allan_Custom_helmet_1.jpg" alt="Character"width="600px">
-    <img src="Copy of Copy of Brock Allan, Custom helmet (2).jpg" alt="Character"width="600px">
-    <img src="wolf.jpg" alt="Character"width="600px">
+  <!-- Left Side: Buttons -->
+  <div class="menu-left">
     <div class="button-grid">
-    <button onclick="window.location.href='front.html'">Home page</button>
-
+      <button onclick="window.location.href='index.html'">Home Page</button>
+      <button onclick="window.location.href='https://github.com/Brock555555?tab=repositories'">Github Projects</button>
+      <button onclick="window.location.href='School_Projects.html'">School Projects</button>
+      <button onclick="window.location.href='Thesis.html'">Thesis & Research Papers</button>
+      <button onclick="window.location.href='graphic.html'">Graphic Design</button>
+      <button onclick="window.location.href='coding.html'">Coding Resources</button>
+      <button>Notes</button>
+    </div>
   </div>
 
-  
+  <!-- Right Side: Resume -->
+  <div class="menu-right">
+    <p><b>Current Resumes:<br>Software Engineer, Machine Learning, Game Design</b></p>
+    <iframe src="combined_resumes.pdf#page=1"></iframe>
+  </div>
 
-<script>
-  // Show site content once overlay animation ends
-  window.addEventListener("load", () => {
-    const overlay = document.querySelector(".opening-overlay");
-    const content = document.querySelector(".site-content");
-    overlay.addEventListener("animationend", () => {
-      overlay.style.display = "none";
-      content.classList.add("show");
-    });
-  });
-</script>
+  <!-- Center Area: Scrolls Normally -->
+  <div class="middle-section">
+    
+    <!-- Intro text -->
+    <div class="intro-text">
+      This page is composed of graphical design projects that I have completed over the years.
+    </div>
+
+    <!-- Gallery -->
+    <div class="menu">
+      <img src="Hades_Brock_Allan_Custom_helmet_1.png" alt="Hades Custom Helmet">
+      <img src="mav.jpg" alt="Mav Design">
+      <img src="IMG_20210219_192233_956.jpg" alt="Graphic Design Project 1">
+      <img src="Kratos_Brock_Allan_Custom_helmet_1.jpg" alt="Kratos Custom Helmet">
+      <img src="Screenshot_20210313-105704_Drive.jpg" alt="Graphic Design Project 2">
+      <img src="Zeus_Brock_Allan_Custom_helmet_1.jpg" alt="Zeus Custom Helmet">
+      <img src="Copy of Copy of Brock Allan, Custom helmet (2).jpg" alt="Custom Helmet Design">
+      <img src="wolf.jpg" alt="Wolf Design">
+      
+      
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>

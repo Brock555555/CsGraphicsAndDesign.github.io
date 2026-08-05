@@ -17,17 +17,8 @@
     color: #fff;
     line-height: 1.6;
     overflow-x: hidden;
-  }
-
-  /* ====== Intro text ====== */
-  .intro-text {
-    width: 100%;
-    padding: 30px 20px;
-    text-align: center;
-    background: rgba(10, 10, 30, 0.8);
-    border-bottom: 2px solid #00f6ff;
-    box-shadow: 0 0 10px #00f6ff, 0 0 20px rgba(0, 246, 255, 0.5);
-    font-size: 1.2rem;
+    background: url("helmet.jpg") repeat; 
+    background-size: 160px; 
   }
 
   /* ====== Title ====== */
@@ -35,9 +26,10 @@
     width: 100%;
     text-align: center;
     padding: 20px;
-    background: rgba(10, 10, 30, 0.9);
+    background: rgba(10, 10, 30, 0.95);
     border-bottom: 3px solid #00f6ff;
     box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    margin-bottom: 30px;
   }
 
   header h1 {
@@ -45,94 +37,274 @@
     text-shadow: 0 0 15px #00f6ff, 0 0 30px #00f6ff;
   }
 
-  /* ====== Menu container ====== */
-  .menu {
-    width: 100%;
-    min-height: calc(100vh - 160px);
-    background: rgba(10, 10, 30, 0.85);
-    border: 3px solid #00f6ff;
-    border-top: none;
-    box-shadow: 0 0 20px #00f6ff, 0 0 60px rgba(0, 246, 255, 0.7);
-    display: flex;
-    justify-content: top;
-    align-items: center;
-    padding: 50px 20px;
-    gap: 60px;
-    animation: flicker 2s infinite alternate;
-    flex-direction: column;
+  /* ====== STATIC LEFT MENU (Buttons) ====== */
+  .menu-left {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000000;
+    padding: 25px;
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    z-index: 1000;
+    width: 260px;
   }
 
-  .button-grid button{
-    background: rgba(0, 246, 255, 0.2);
+  .menu-left .button-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .menu-left button, .menu .button-grid button {
+    background: rgba(0, 246, 255, 0.1);
     border: 2px solid #00f6ff;
     color: #fff;
-    font-size: 1.2rem;
-    padding: 15px 30px;
-    border-radius: 6px;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: flex;
-    justify-content: center; /* center horizontally */
-    width: 100%;
+    text-align: center;
   }
 
-  .button-grid button:hover {
+  .menu-left button:hover, .menu .button-grid button:hover {
     background: #00f6ff;
     color: #000;
-    box-shadow: 0 0 20px #00f6ff, 0 0 40px #00f6ff;
+    box-shadow: 0 0 15px #00f6ff;
   }
+
+  /* ====== STATIC RIGHT MENU (Resume) ====== */
+  .menu-right {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000000;
+    padding: 20px;
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00f6ff, 0 0 30px rgba(0, 246, 255, 0.7);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 450px;
+  }
+
+  .menu-right p {
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .menu-right iframe {
+    width: 100%;
+    height: 75vh;
+    border: none;
+    border-radius: 8px;
+  }
+
+  /* ====== MIDDLE SCROLLING CONTENT ====== */
+  .middle-section {
+    margin-left: 320px; 
+    margin-right: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 50px;
+  }
+
+  /* ====== Intro text ====== */
+  .intro-text {
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
+    background: rgba(10, 10, 30, 0.95);
+    border: 2px solid #00f6ff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #00f6ff, 0 0 20px rgba(0, 246, 255, 0.5);
+    font-size: 1.2rem;
+  }
+
+  /* ====== Menu container (Research List) ====== */
+  .menu {
+    width: 100%;
+    background: rgba(10, 10, 30, 0.95);
+    border: 3px solid #00f6ff;
+    box-shadow: 0 0 20px #00f6ff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 40px;
+    gap: 30px;
+    animation: flicker 2s infinite alternate;
+  }
+
+  .menu p {
+    font-size: 1.05rem;
+  }
+
+  .menu a {
+    color: #00f6ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #00f6ff;
+  }
+
+  .menu iframe {
+    width: 100%;
+    height: 800px;
+    border: 2px solid #00f6ff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .menu .button-grid {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
   @keyframes flicker {
     0% { box-shadow: 0 0 10px #00f6ff, 0 0 25px rgba(0, 246, 255, 0.6); }
     100% { box-shadow: 0 0 25px #00f6ff, 0 0 60px rgba(0, 246, 255, 0.9); }
+  }
+
+  /* =========================================
+     MOBILE & TABLET RESPONSIVE STYLES
+     ========================================= */
+  @media (max-width: 1400px) {
+    .site-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      overflow-x: hidden;
+    }
+
+    header { order: 1; margin-bottom: 20px; }
+    .menu-left { order: 2; margin-bottom: 40px; }
+    .middle-section { order: 3; margin-bottom: 0; padding-bottom: 20px; }
+    .menu-right { order: 4; margin-bottom: 40px; }
+
+    .menu-left {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    .menu-left .button-grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .menu-left button {
+      flex: 1 1 200px; 
+    }
+
+    .middle-section {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .menu-right {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    .menu-right iframe {
+      height: 600px; 
+    }
+
+    .menu iframe {
+      height: 500px;
+    }
   }
 </style>
 </head>
 <body>
 
-
-<!-- Main content -->
 <div class="site-content">
   <!-- Title -->
   <header>
     <h1>Research and Thesis Projects</h1>
   </header>
 
-  <!-- Intro text -->
-  <div class="intro-text">
-    This page is composed of a series of pdfs and links to research papers I have completed over the course of high school and college.
-  </div>
-
-  <div class = "menu">
-    <p>
-      <b>Operation Wallacea Coral Reefs:</b><br> This research paper was the result of an internship I had during my sophmore year of high school. We worked with Operation Wallacea, a team of scientists based out of the United Kingdom with the goal of observing the effects of global warming
-      upon multiple aspects of the environment. The internship composed of seminars where we discussed research, composed reports, and created graphs using R.
-    </p>
-    <iframe src="Brock Allan Thesis.pdf#page=1" width="100%" height="900px" style="border:none;"></iframe>
-    <p>
-      <b>Operation Wallacea Coral Reefs:</b><br> This research paper was the result of an internship I had during my sophmore year of high school. We worked with Operation Wallacea, a team of scientists based out of the United Kingdom with the goal of observing the effects of global warming
-      upon multiple aspects of the environment. The internship composed of seminars where we discussed research, composed reports, and created graphs using R.
-    </p>
-    <iframe src="Coral Reef.pdf#page=1" width="100%" height="900px" style="border:none;"></iframe>
-    <p>
-      <b>Asthma Study in University Students:</b><br>A website I developed containing research I performed relating Asthma to the experiences of University students. The goal was to explore how Digital Ethnography (the way people interact and form communites in digital spaces) impacted
-      Asthma discussions and knowledge. This was originally a google sites page and is hard to translate here, to see the original page in its original format go
-      <a href="https://sites.google.com/uci.edu/asthmaicantbreath/home" title="Visit Example">here.</a>
-    </p>
-    <iframe src="Asthma_ I Cant Breath.pdf#page=1" width="100%" height="900px" style="border:none;"></iframe>
-    <p>
-      <b>Worldbuilding in Revenge of the Sith:</b><br>This paper analyzes Star Wars Episode III: Revenge of the Sith as both a political warning and a worldbuilding project that reflects on liberty and democracy in modern governance. 
-      It argues that George Lucas intentionally drew from historical and political contexts such as the fall of Rome, World War II, and post-9/11 America to illustrate how republics collapse into tyranny when citizens surrender freedoms to corrupt leaders. 
-      The downfall of the Jedi and the Galactic Republic is paralleled with the erosion of liberty in the United States, where unchecked power and political complacency threaten democracy. 
-      Through visual and narrative analysis, the film is shown to convey a cautionary message: liberty dies not only by force but by public consent. 
-      Beyond politics, Revenge of the Sith demonstrates the role of worldbuilding in science fiction as a humanistic teaching tool, shaping discourse, imagination, and cultural understanding. 
-      Ultimately, the paper concludes that the film warns audiences to resist complacency, preserve liberty, and engage critically with governance.
-    </p>
-    <iframe src="Final Research Paper.pdf#page=1" width="100%" height="900px" style="border:none;"></iframe>
+  <!-- Left Side: Buttons -->
+  <div class="menu-left">
     <div class="button-grid">
-    <button onclick="window.location.href='front.html'">Home page</button>
-
+      <button onclick="window.location.href='index.html'">Home Page</button>
+      <button onclick="window.location.href='https://github.com/Brock555555?tab=repositories'">Github Projects</button>
+      <button onclick="window.location.href='School_Projects.html'">School Projects</button>
+      <button onclick="window.location.href='Thesis.html'">Thesis & Research Papers</button>
+      <button onclick="window.location.href='graphic.html'">Graphic Design</button>
+      <button onclick="window.location.href='coding.html'">Coding Resources</button>
+      <button>Notes</button>
+    </div>
   </div>
 
+  <!-- Right Side: Resume -->
+  <div class="menu-right">
+    <p><b>Current Resumes:<br>Software Engineer, Machine Learning, Game Design</b></p>
+    <iframe src="combined_resumes.pdf#page=1"></iframe>
+  </div>
+
+  <!-- Center Area: Scrolls Normally -->
+  <div class="middle-section">
+    
+    <!-- Intro text -->
+    <div class="intro-text">
+      This page is composed of a series of pdfs and links to research papers I have completed over the course of high school and college.
+    </div>
+
+    <!-- Research & Pdfs -->
+    <div class="menu">
+      <p>
+        <b>Exploring the Capabilities and Constraints of AI and Large Language Models in Game Design Methodology:</b><br> This is my Senior thesis for the Campuswide Honors Collegium at the University of California Irvine. It delves into whether or not AI is currently capable of replacing game developers in modern job markets. Specifically it compares two versions of ChatGPT and asks them to create games from scratch with no intervention except for differing prompting strategies. These games are then evaluated using proven and tested evaluation metrics and compared against a human-AI collaboration game.
+      </p>
+      <iframe src="Brock Allan Thesis.pdf#page=1"></iframe>
+      
+      <p>
+        <b>Operation Wallacea Coral Reefs:</b><br> This research paper was the result of an internship I had during my sophomore year of high school. We worked with Operation Wallacea, a team of scientists based out of the United Kingdom with the goal of observing the effects of global warming upon multiple aspects of the environment. The internship composed of seminars where we discussed research, composed reports, and created graphs using R.
+      </p>
+      <iframe src="Coral Reef.pdf#page=1"></iframe>
+      
+      <p>
+        <b>Asthma Study in University Students:</b><br>A website I developed containing research I performed relating Asthma to the experiences of University students. The goal was to explore how Digital Ethnography (the way people interact and form communities in digital spaces) impacted Asthma discussions and knowledge. This was originally a google sites page and is hard to translate here, to see the original page in its original format go <a href="https://sites.google.com/uci.edu/asthmaicantbreath/home" title="Visit Example" target="_blank">here.</a>
+      </p>
+      <iframe src="Asthma_ I Cant Breath.pdf#page=1"></iframe>
+      
+      <p>
+        <b>Worldbuilding in Revenge of the Sith:</b><br>This paper analyzes Star Wars Episode III: Revenge of the Sith as both a political warning and a worldbuilding project that reflects on liberty and democracy in modern governance. It argues that George Lucas intentionally drew from historical and political contexts such as the fall of Rome, World War II, and post-9/11 America to illustrate how republics collapse into tyranny when citizens surrender freedoms to corrupt leaders. The downfall of the Jedi and the Galactic Republic is paralleled with the erosion of liberty in the United States, where unchecked power and political complacency threaten democracy. Through visual and narrative analysis, the film is shown to convey a cautionary message: liberty dies not only by force but by public consent. Beyond politics, Revenge of the Sith demonstrates the role of worldbuilding in science fiction as a humanistic teaching tool, shaping discourse, imagination, and cultural understanding. Ultimately, the paper concludes that the film warns audiences to resist complacency, preserve liberty, and engage critically with governance.
+      </p>
+      <iframe src="Final Research Paper.pdf#page=1"></iframe>
+      
+      <div class="button-grid">
+        <button onclick="window.location.href='front.html'">Home Page</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 </body>
 </html>
